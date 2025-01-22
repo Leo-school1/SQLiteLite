@@ -7,7 +7,7 @@
 
 void repl_init() {
     printf("Welcome to SQLiteLite!\n");
-    printf("Type 'exit' to quit.\n");
+    printf("Type '.exit' to quit.\n");
 }
 
 void repl_run() {
@@ -16,18 +16,31 @@ void repl_run() {
     while (true) {
         printf("> ");
         if (fgets(input, BUFFER_SIZE, stdin) == NULL) {
-            break; // Handle EOF
+            // End of file reached
+            printf("Error Occurred!\n");
+            continue;
         }
 
-        // Remove newline character
         input[strcspn(input, "\n")] = 0;
 
-        if (strcmp(input, "exit") == 0) {
+        char *token = strtok(input, " ");
+
+        char *tokens_list[BUFFER_SIZE];
+
+        int i = 0;
+        while (token != NULL) {
+            tokens_list[i] = token;
+            i++;
+            token = strtok(NULL, " ");
+        }
+        tokens_list[i] = token;
+
+        if (strcmp(tokens_list[0], ".exit") == 0) {
             break;
         }
-
-        // Evaluate the command (placeholder for actual evaluation logic)
-        printf("You entered: %s\n", input);
+        
+         
+        printf("Command entered: %s\n", input); // placholder
     }
 }
 
