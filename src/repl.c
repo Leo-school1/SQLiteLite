@@ -33,14 +33,13 @@ void repl_run() {
             i++;
             token = strtok(NULL, " ");
         }
-        tokens_list[i] = token;
+        tokens_list[i] = token; // tokens_list is now a list of all commands separated by spaces
 
         if (strcmp(tokens_list[0], ".exit") == 0) {
             break;
         }
         
-         
-        printf("Command entered: %s\n", input); // placholder
+        
     }
 }
 
