@@ -10,10 +10,12 @@
 void repl_init() {
     printf("Welcome to SQLiteLite!\n");
     printf("Type '.exit' to quit.\n");
-    printf("Type '.open FILENAME' to open a database file.\n");
+    printf("Type '.open FILENAME' to open or create a database file.\n");
 }
 
 void repl_run() {
+    char file_name[BUFFER_SIZE] = {0};
+
     char input[BUFFER_SIZE];
 
     while (true) {
@@ -42,7 +44,21 @@ void repl_run() {
             break;
         }
         if (strcmp(tokens_list[0], ".open") == 0) {
-            link_database(tokens_list[1]);
+            if (tokens_list[1] == NULL) {
+                printf("Error: Must provide a filename.\n");
+                continue;
+            }
+            strcpy(file_name, tokens_list[1]);
+            link_database(file_name);
+            continue;
+        }
+        if (strcmp(tokens_list[0], "new") == 0) {
+            if (file_name[0] == 0) {
+                printf("Error: No database file linked.\n");
+                continue;
+            }
+            table_init();
+            continue;
         }
         
         

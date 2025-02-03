@@ -3,17 +3,20 @@
 
 
 // links OR creates database file
-char link_database(const char *file_name) {
+void link_database(const char *file_name) {
     FILE *fptr = fopen(file_name, "rb");
     if (fptr != NULL) {
-        return file_name;
         fclose(fptr);
+        printf("Database file linked successfully.\n");
+        return;
+
     }
     fptr = fopen(file_name, "wb");
     if (fptr == NULL) {
         printf("Error: Could not create database file.\n");
-        return NULL;
+        return;
     }
-    return file_name;
+    printf("Database file created successfully.\n");
     fclose(fptr);
+    return;
 }
