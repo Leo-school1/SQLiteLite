@@ -53,14 +53,15 @@ void repl_run() {
             continue;
         }
         if (strcmp(tokens_list[0], "new") == 0) {
-            if (file_name[0] == 0) {
-                printf("Error: No database file linked.\n");
+            if (strcmp(tokens_list[1], "table") == 0) {
+                if (file_name[0] == 0) {
+                    printf("Error: No database file linked.\n");
+                    continue;
+                }
+                table_init(tokens_list[2], file_name);
                 continue;
             }
-            table_init();
-            continue;
         }
-        
         
     }
 }
