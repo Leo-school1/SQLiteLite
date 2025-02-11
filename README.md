@@ -1,5 +1,5 @@
 # SQLiteLite
-A database designed after SQLite made in C. Not made using SQL or SQLite, just pure C. This project is for my learning purposes, as such I may not change features quickly if asked, but I will try to get around to it. Feel free to use it if you want.
+A database designed after SQLite made in C. Not made using SQL or SQLite, but partially based on SQLite syntax. Coded in pure C with no external libraries. This project is for learning purposes, as such I would not recommend using for real databases. Feel free to use the code if you want to make a similar project or something else.
 
 ## Compile
 Compile using CMake with the following commands:
