@@ -4,13 +4,12 @@
 #include "repl.h"
 #include "table.h"
 #include "open_data.h"
-
 #define BUFFER_SIZE 1024
 
 void repl_init() {
     printf("Welcome to SQLiteLite!\n");
     printf("Type '.exit' to quit.\n");
-    printf("Type '.open FILENAME' to open or create a database file.\n");
+    printf("Type 'open FILENAME' to open or create a database file.\n");
 }
 
 void repl_run() {
@@ -43,7 +42,7 @@ void repl_run() {
         if (strcmp(tokens_list[0], ".exit") == 0) {
             break;
         }
-        if (strcmp(tokens_list[0], ".open") == 0) {
+        if (strcmp(tokens_list[0], "open") == 0) {
             if (tokens_list[1] == NULL) {
                 printf("Error: Must provide a filename.\n");
                 continue;
@@ -53,6 +52,9 @@ void repl_run() {
             continue;
         }
         if (strcmp(tokens_list[0], "new") == 0) {
+            if (tokens_list[1] == NULL) {
+                continue;
+            }
             if (strcmp(tokens_list[1], "table") == 0) {
                 if (file_name[0] == 0) {
                     printf("Error: No database file linked.\n");

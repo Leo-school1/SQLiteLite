@@ -7,6 +7,7 @@ set(SOURCES
     src/main.c
     src/repl.c
     src/open_data.c
+    src/table.c
 )
 
 add_executable(SQLiteLite ${SOURCES})
