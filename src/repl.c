@@ -60,6 +60,9 @@ void repl_run() {
                     printf("Error: No database file linked.\n");
                     continue;
                 }
+                if (tokens_list[2] == NULL) {
+                    continue;
+                }
                 table_init(tokens_list[2], file_name);
                 continue;
             }
