@@ -61,11 +61,28 @@ void repl_run() {
                     continue;
                 }
                 if (tokens_list[2] == NULL) {
+                    printf("Error: Must provide a table name.\n");
                     continue;
                 }
                 table_init(tokens_list[2], file_name);
                 continue;
             }
+        }
+        if (strcmp(tokens_list[0], "get") == 0) {
+            if (tokens_list[1] == "table") {
+                if (file_name[0] == 0) {
+                    printf("Error: No database file linked.\n");
+                    continue;
+                }
+                if (tokens_list[2] == NULL) {
+                    printf("Error: Must provide a key.\n");
+                    continue;
+                }
+    
+                print_table(tokens_list[2], file_name);
+                continue;
+            }
+            
         }
         
     }
